@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Canvas, useFrame } from 'react-three-fiber';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
 function Box(props) {
   // This reference will give us direct access to the mesh

@@ -1,22 +1,12 @@
-import React, { useMemo, useEffect, useState } from 'react'
+import React from 'react'
 import { useLoader } from 'react-three-fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Asset } from 'expo-asset';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+
 
 const Model = (props) => {
-    const asset = Asset.fromModule(require("../../../assets/scene.gltf"));
-    asset.downloadAsync();
-    const jsonModel = useLoader(GLTFLoader, asset.localUri).scene;
-    const [loaded, setLoaded] = useState(false)
-
-    useEffect(()=> {
-        setLoaded(true)
-        props.isloaded()
-    }, [])
-
-    let test = loaded ? <primitive object={jsonModel} /> : "";
-    return test
-    
+    console.log(props.source)
+    const model = useLoader(FBXLoader, props.source)
+    return <primitive object={model} />
 
 }
 export default Model
